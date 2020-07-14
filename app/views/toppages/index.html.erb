@@ -1,9 +1,24 @@
-<div class="center jumbotron">
-	<div class="text-center">
-		<h1>こんな時何て言えばいい？</h1>
+<% if logged_in? %>
+	<div class="row">
+		<div class="col-sm-3">
+			<!-- render sidebar -->
+			<aside>
+				タグ一覧
+			</aside>
+			<!-------------------->
+		</div>
+		<div class="col-sm-9">
+				質問一覧
+		</div>
 	</div>
-</div>
-<div class="text-center">
-	<%= link_to 'アカウント登録', signup_path, class: 'mr-4 btn btn-primary' %>
-	<a href="#" class="btn btn-primary">ログイン</a>
-</div>
+<% else %>
+	<div class="center jumbotron">
+		<div class="text-center">
+			<h1>こんな時何て言えばいい？</h1>
+		</div>
+	</div>
+	<div class="text-center">
+		<%= link_to 'アカウント登録', signup_path, class: 'mr-4 btn btn-primary' %>
+		<%= link_to 'ログイン', login_path,  class: 'btn btn-primary' %>
+	</div>
+<% end %>
