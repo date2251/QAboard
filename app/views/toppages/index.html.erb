@@ -1,14 +1,27 @@
 <% if logged_in? %>
+	<div class="text-left mb-4">
+		<%= link_to '質問する', questions_new_path, class: 'btn btn-info btn-sm-lg' %>
+		<span>検索窓</span>
+	</div>
 	<div class="row">
 		<div class="col-sm-3">
 			<!-- render sidebar -->
 			<aside>
-				タグ一覧
+				<h3 class="mb-4">タグ</h3>
 			</aside>
 			<!-------------------->
 		</div>
 		<div class="col-sm-9">
-				質問一覧
+			<h3 class="mb-4">QA</h3>
+			<!-- render sidebar -->
+			<% @questions.each do |q| %>
+				<div style="border-top: 1px solid #d1d1d1">
+					<div class="badge badge-secondary"><%= q.tag %></div>
+					<div><%= link_to q.content, question_path(q.id) %> <span class="badge badge-primary float-right">未回答</span></div>
+				</div>
+			<% end %>
+			<!-------------------->
+			<%= paginate @questions %>
 		</div>
 	</div>
 <% else %>

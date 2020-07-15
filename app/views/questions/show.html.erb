@@ -1,0 +1,12 @@
+<h3 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="mb-4"><%= @question.content %></h3>
+<div class="card">
+	<div class="card-header">
+		<%= link_to @questioner.name, user_path(@questioner.id) %> さん
+	</div>
+	<div class="card-body">
+		<div>
+			<!-- 改行・段落反映処理 -->
+			<%=safe_join(@question.content.split("\n"),tag(:br))%>
+		</div>
+	</div>
+</div>
