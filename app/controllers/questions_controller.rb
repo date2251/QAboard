@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   def new
 		@question = current_user.questions.build
+		@answer = Answer.new
   end
 
   def create
@@ -17,6 +18,6 @@ class QuestionsController < ApplicationController
   def show
 		@question = Question.find(params[:id])
 		@questioner = User.find_by(id: @question.user_id)
+		@answers = Answer.where(question_id: @question.id)
   end
-
 end

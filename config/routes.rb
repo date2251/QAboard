@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
 	get 'questions/new', to: 'questions#new'
 	resources :questions, only: [:show, :create]
+
+	post 'questions/:id', to: 'answers#create'
 end

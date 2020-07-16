@@ -1,12 +1,38 @@
 <h3 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" class="mb-4"><%= @question.content %></h3>
-<div class="card">
+<!-- Questionカード一覧 -->
+<div class="card mb-4">
 	<div class="card-header">
-		<%= link_to @questioner.name, user_path(@questioner.id) %> さん
+		<%= link_to @questioner.name, user_path(@questioner.id) %> さん<span class="float-right">お気に入り</span>
 	</div>
 	<div class="card-body">
 		<div>
 			<!-- 改行・段落反映処理 -->
-			<%=safe_join(@question.content.split("\n"),tag(:br))%>
+			<%= safe_join(@question.content.split("\n"),tag(:br)) %>
 		</div>
 	</div>
+	<div class="card-footer">
+		回答数
+	</div>
 </div>
+<hr>
+<!-- Answerカード一覧 -->
+<% @answers.each do |answer| %>
+	<div class="card mb-4">
+		<div class="card-header">
+			<%= link_to User.find(answer.user_id).name, user_path(answer.user_id) %> さん<span class="float-right">いいね</span>
+		</div>
+		<div class="card-body">
+			<%= safe_join(answer.content.split("\n"),tag(:br)) %>
+		</div>
+	</div>
+<% end %>
+<!-- 回答フォーム -->
+<%= form_with(model: @answer, local: true) do |f| %>
+	<div class="form-group">
+		<strong><%= f.label :content, '質問への回答' %></strong>
+		<%= f.text_area :content, class: 'form-control', rows: 5 %>
+	</div>
+	<%= hidden_field_tag :question_id, @question.id %>
+	<%= hidden_field_tag :user_id, current_user.id %>
+	<%= f.submit '回答する', class: 'btn btn-info' %>
+<% end %>
