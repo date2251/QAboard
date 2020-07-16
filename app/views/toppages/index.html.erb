@@ -17,7 +17,7 @@
 			<% @questions.each do |q| %>
 				<div style="border-top: 1px solid #d1d1d1">
 					<div class="badge badge-secondary"><%= q.tag %></div>
-					<div><%= link_to q.content, question_path(q.id) %> <span class="badge badge-primary float-right">未回答</span></div>
+					<div><%= link_to q.content, question_path(q.id) %> <span class="<%= q.answers.count > 0 ? 'badge badge-primary float-right' : 'badge badge-danger float-right' %>"><%= q.answers.count > 0 ? '回答' + q.answers.count.to_s : '未回答' %></span></div>
 				</div>
 			<% end %>
 			<!-------------------->
