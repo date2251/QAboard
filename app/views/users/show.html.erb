@@ -1,22 +1,10 @@
 <div class="row">
 	<div class="col-sm-4">
-		<div class="card">
-			<div class="card-header">
-				<h3 class="card-title"><%= @user.name %></h3>
-			</div>
-			<div class="card-body">
-				<p>質問数：<%= @user.questions.count %></p>
-				<p>回答数：<%= @user.answers.count %></p>
-				<p>高評価数：</p>
-			</div>
-		</div>
+		<%= render 'user_card' %>
 	</div>
 	<div class="col-sm-8">
-		<ul class="nav nav-tabs nav-justified mb-3">
-			<li class="nav-item"><a href="<%= user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(user_path(@user.id)) %>" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">質問</a></li>
-			<li class="nav-item"><a href="#" class="nav-link">回答</a></li>
-			<li class="nav-item"><a href="#" class="nav-link">お気に入り</a></li>
-		</ul>
+		<!-- render tabs -->
+		<%= render 'tabs' %>
 		<!-- render questions --> 
 		<div class="mb-4">
 	    <% @questions.each do |q| %> 
@@ -28,6 +16,5 @@
 	    <% end %>
 		</div>
 		<%= paginate @questions %>
-    <!-------------------->
 	</div>
 </div>

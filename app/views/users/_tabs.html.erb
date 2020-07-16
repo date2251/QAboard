@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs nav-justified mb-3">
+	<li class="nav-item"><a href="<%= user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(user_path(@user.id)) %>">質問</a></li>
+	<li class="nav-item"><a href="<%= answers_user_path(@user.id) %>" class="nav-link <%= 'active' if current_page?(answers_user_path(@user.id)) %>">回答</a></li>
+	<li class="nav-item"><a href="#" class="nav-link">お気に入り</a></li>
+</ul>

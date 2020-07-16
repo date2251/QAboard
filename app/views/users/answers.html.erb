@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-sm-4">
+		<%= render 'user_card' %>
+	</div>
+	<div class="col-sm-8">
+		<!-- render tabs -->
+		<%= render 'tabs' %>
+		<!-- render questions --> 
+		<div class="mb-4">
+	    <% @answers.each do |a| %> 
+	      <div style="border-top: 1px solid #d1d1d1">
+					<span><%= a.created_at %></span>
+					<span class="float-right mt-1 badge badge-info">いいね</span> 
+	        <div style="overflow: hidden" class="mb-3"><a href="<%= question_path(a.id) %>"><%= a.content %></a></div>
+	      </div>
+	    <% end %>
+		</div>
+		<%= paginate @answers %>
+	</div>
+</div>

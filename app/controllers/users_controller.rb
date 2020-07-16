@@ -6,6 +6,11 @@ class UsersController < ApplicationController
 		@questions = Question.where(user_id: @user.id).order(id: :desc).page(params[:page]).per(10)
   end
 
+	def answers
+		@user = User.find(params[:id])
+		@answers = Answer.where(user_id: @user.id).order(id: :desc).page(params[:page]).per(10)
+	end
+
   def new
 		@user = User.new
   end
