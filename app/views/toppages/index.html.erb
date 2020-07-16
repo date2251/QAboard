@@ -7,19 +7,21 @@
 		<div class="col-sm-3">
 			<!-- render sidebar -->
 			<aside>
-				<h3 class="mb-4">タグ</h3>
+				<h3 class="mb-3">タグ</h3>
 			</aside>
 			<!-------------------->
 		</div>
 		<div class="col-sm-9">
 			<h3 class="mb-4">QA</h3>
-			<!-- render sidebar -->
-			<% @questions.each do |q| %>
-				<div style="border-top: 1px solid #d1d1d1">
-					<div class="badge badge-secondary"><%= q.tag %></div>
-					<div><%= link_to q.content, question_path(q.id) %> <span class="<%= q.answers.count > 0 ? 'badge badge-primary float-right' : 'badge badge-danger float-right' %>"><%= q.answers.count > 0 ? '回答' + q.answers.count.to_s : '未回答' %></span></div>
-				</div>
-			<% end %>
+			<!-- render questions -->
+			<div class="mb-4">
+				<% @questions.each do |q| %>
+					<div style="border-top: 1px solid #d1d1d1;">
+						<span class="badge badge-secondary"><%= q.tag %></span><span class="float-right mt-1 <%= q.answers.count > 0 ? 'badge badge-primary' : 'badge badge-danger' %>"><%= q.answers.count > 0 ? '回答' + q.answers.count.to_s : '未回答' %></span>
+						<div style="overflow: hidden"><%= link_to q.content, question_path(q.id), style: 'overflow: hidden; text-overflow: ellipsis; white-space: nowrap' %></div>
+					</div>
+				<% end %>
+			</div>
 			<!-------------------->
 			<%= paginate @questions %>
 		</div>
