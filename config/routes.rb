@@ -15,12 +15,9 @@ Rails.application.routes.draw do
 	end
 
 	get 'questions/new', to: 'questions#new'
-	resources :questions, only: [:show, :create] do
-		member do
-			post :good
-			delete :destroy
-		end
-	end
+	resources :questions, only: [:show, :create]
 
 	post 'questions/:id', to: 'answers#create'
+
+	resources :goods, only: [:create, :destroy]
 end

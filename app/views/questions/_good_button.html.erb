@@ -1,10 +1,10 @@
 <% if current_user.loving?(answer) %>
-	<%= form_with(model: current_user.goods.find_by(answer_id: answer.id), url: question_path(current_user.id), local: true, method: :delete) do |f| %>
+	<%= form_with(model: current_user.goods.find_by(answer_id: answer.id), local: true, method: :delete) do |f| %>
 		<%= hidden_field_tag :answer_id, answer.id %>
 		<%= f.submit 'いいね', class: 'btn btn-info btn-sm' %>
 	<% end %>
 <% else %>
-	<%= form_with(model: current_user.goods.build, url: good_question_path(current_user.id), local: true) do |f| %>
+	<%= form_with(model: current_user.goods.build, local: true) do |f| %>
 		<%= hidden_field_tag :answer_id, answer.id %>
 		<%= f.submit 'いいね', class: 'btn btn-outline-info btn-sm' %>
 	<% end %>
