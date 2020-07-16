@@ -15,7 +15,12 @@ Rails.application.routes.draw do
 	end
 
 	get 'questions/new', to: 'questions#new'
-	resources :questions, only: [:show, :create]
+	resources :questions, only: [:show, :create] do
+		member do
+			post :good
+			delete :destroy
+		end
+	end
 
 	post 'questions/:id', to: 'answers#create'
 end

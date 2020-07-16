@@ -19,7 +19,7 @@
 <% @answers.each do |answer| %>
 	<div class="card mb-4">
 		<div class="card-header">
-			<%= link_to User.find(answer.user_id).name, user_path(answer.user_id) %> さん<span class="float-right">いいね</span>
+			<%= link_to User.find(answer.user_id).name, user_path(answer.user_id) %> さん<span class="float-right"><%= render 'good_button', answer: answer %></span>
 		</div>
 		<div class="card-body">
 			<%= safe_join(answer.content.split("\n"),tag(:br)) %>
