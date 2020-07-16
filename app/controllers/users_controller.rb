@@ -4,11 +4,13 @@ class UsersController < ApplicationController
   def show
 		@user = User.find(params[:id])
 		@questions = Question.where(user_id: @user.id).order(id: :desc).page(params[:page]).per(10)
+		@count_good = counts_gooded(@user)
   end
 
 	def answers
 		@user = User.find(params[:id])
 		@answers = Answer.where(user_id: @user.id).order(id: :desc).page(params[:page]).per(10)
+		@count_good = counts_gooded(@user)
 	end
 
   def new

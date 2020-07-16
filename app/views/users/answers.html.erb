@@ -10,8 +10,10 @@
 	    <% @answers.each do |a| %> 
 	      <div style="border-top: 1px solid #d1d1d1">
 					<span><%= a.created_at %></span>
-					<span class="float-right mt-1 badge badge-info">いいね</span> 
-	        <div style="overflow: hidden" class="mb-3"><a href="<%= question_path(a.id) %>"><%= a.content %></a></div>
+					<% if Good.where(answer_id: a.id).count > 0 %>
+						<span class="float-right mt-1 badge badge-info">いいね<%= Good.where(answer_id: a.id).count %></span> 
+					<% end %>
+	        <div style="overflow: hidden" class="mb-3"><a href="<%= question_path(a.question_id) %>"><%= a.content %></a></div>
 	      </div>
 	    <% end %>
 		</div>
