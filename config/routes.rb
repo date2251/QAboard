@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 		member do
 			get :answers
 			get :likes
+			get :favorites
 		end
 	end
 
@@ -20,4 +21,6 @@ Rails.application.routes.draw do
 	post 'questions/:id', to: 'answers#create'
 
 	resources :goods, only: [:create, :destroy]
+
+	resources :favorites, only: [:create, :destroy]
 end

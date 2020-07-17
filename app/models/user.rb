@@ -25,4 +25,20 @@ class User < ApplicationRecord
 	def loving?(answer)
 		self.goodings.include?(answer)
 	end
+
+	has_many :favorites
+	has_many :favoritings, through: :favorites, source: :question
+
+	def favorite(question)
+		self.favorites.find_or_create_by(question_id: question.id)
+	end
+
+	def unfavorite(question)
+		favorite = self.favorites.find_by(question_id: question.id)
+		favorite.destroy if favorite
+	end
+
+	def favoriting?(question)
+		self.favoritings.include?(question)
+	end
 end

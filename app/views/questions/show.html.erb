@@ -2,7 +2,7 @@
 <!-- Questionカード一覧 -->
 <div class="card mb-4">
 	<div class="card-header">
-		<%= link_to @questioner.name, user_path(@questioner.id) %> さん<span class="float-right">お気に入り</span>
+		<%= link_to @questioner.name, user_path(@questioner.id) %> さん<span class="float-right"><%= render 'favorites/favorite_button', question: @question %></span>
 	</div>
 	<div class="card-body">
 		<div>

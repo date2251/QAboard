@@ -13,6 +13,12 @@ class UsersController < ApplicationController
 		@count_good = counts_gooded(@user)
 	end
 
+	def favorites
+		@user = User.find(params[:id])
+		@questions = @user.favoritings.order(id: :desc).page(params[:page]).per(10)
+		@count_good = counts_gooded(@user)
+	end
+
   def new
 		@user = User.new
   end
