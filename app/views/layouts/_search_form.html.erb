@@ -1,0 +1,6 @@
+<%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
+	<div class='form-group' style="display: flex">
+		<%= f.text_field :searchwords, class: 'form-control' %>
+		<%= f.submit '検索', class: 'btn btn-info float-right ml-1' %>
+	</div>
+<% end %>

@@ -1,4 +1,11 @@
 <% if logged_in? %>
+	<!-- 検索結果 -->
+	<% if @count_questions > 0 %>
+		<p>"<%= @searchword %>"の検索結果（<%= @count_questions %>）</p>
+	<% else %>
+		<p>"<%= @searchword %>"の検索結果は見つかりませんでした</p>
+	<% end %>
+	<!-- QA一覧(showと同じ) -->
 	<div class="text-left mb-4" style="display: flex">
 		<div class="col-sm-3">
 			<%= link_to '質問する', questions_new_path, class: 'btn btn-info btn-sm-lg' %>
