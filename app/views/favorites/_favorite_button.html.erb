@@ -1,5 +1,5 @@
 <% if current_user.favoriting?(question) %>
-	<%= form_with(model: current_user.favorites.find_by(user_id: question.user_id, question_id: question.id), url: favorite_path(current_user.favorites.find_by(user_id: question.user_id, question_id: question.id).id), local: true, method: :delete) do |f| %>
+	<%= form_with(model: current_user.favorites.find_by(user_id: question.user_id, question_id: question.id), url: favorite_path(Favorite.find_by(question_id: question.user_id, question_id: question.id).id), local: true, method: :delete) do |f| %>
 		<%= hidden_field_tag :question_id, question.id %>
 		<%= f.submit 'お気に入り', class: 'btn btn-info' %>
 	<% end %>
