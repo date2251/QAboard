@@ -1,9 +1,13 @@
 <% if logged_in? %>
 	<!-- 検索結果 -->
-	<% if @count_questions > 0 %>
-		<p>"<%= @searchword %>"の検索結果（<%= @count_questions %>）</p>
-	<% else %>
-		<p>"<%= @searchword %>"の検索結果は見つかりませんでした</p>
+	<% if @searchword %>
+		<% if @count_questions > 0 %>
+			<p>"<%= @searchword %>"の検索結果（<%= @count_questions %>）</p>
+		<% else %>
+			<p>"<%= @searchword %>"の検索結果は見つかりませんでした</p>
+		<% end %>
+	<% elsif @categoryword %>
+		<p>"<%= @categoryword %>"（<%= @count_questions %>）</p>
 	<% end %>
 	<!-- QA一覧(showと同じ) -->
 	<div class="text-left mb-4" style="display: flex">
@@ -17,9 +21,7 @@
 	<div class="row">
 		<div class="col-sm-3">
 			<!-- render sidebar -->
-			<aside>
-				<h3 class="mb-3">タグ</h3>
-			</aside>
+			<%= render 'layouts/sidebar' %>
 			<!-------------------->
 		</div>
 		<div class="col-sm-9">
@@ -40,7 +42,7 @@
 <% else %>
 	<div class="center jumbotron">
 		<div class="text-center">
-			<h1>こんな時何て言えばいい？</h1>
+			<h1>質問掲示板</h1>
 		</div>
 	</div>
 	<div class="text-center">

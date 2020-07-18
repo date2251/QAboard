@@ -1,0 +1,8 @@
+<aside>
+	<h3 class="mb-3">タグ</h3>
+	<div style="display: block;">
+		<% @tags.each do |tag| %>
+			<a href="/search?search[categorywords]=<%= tag.tag %>&commit=検索"><p class="float-left btn-sm btn-info m-1"><%= tag.tag %></p></a> 
+		<% end %>
+	</div>
+</aside>

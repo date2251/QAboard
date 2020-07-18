@@ -11,7 +11,7 @@
 	      <div style="border-top: 1px solid #d1d1d1">
 					<span><%= q.created_at %></span>
 					<span class="float-right mt-1 badge <%= q.answers.count > 0 ? 'badge-primary' : 'badge-danger' %>"><%= q.answers.count > 0 ? '回答' + q.answers.count.to_s : '未回答' %></span> 
-	        <div style="overflow: hidden" class="mb-3"><a href="<%= question_path(q.id) %>"><%= q.content %></a></div>
+	        <div style="overflow: hidden" class="mb-3"><a href="<%= question_path(q.id) %>" style="white-space: nowrap"><%= q.content %></a></div>
 	      </div>
 	    <% end %>
 		</div>
