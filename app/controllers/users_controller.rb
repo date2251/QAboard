@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :require_user_logged_in, only: [:create, :show]
+	before_action :require_user_logged_in, only: [:show]
 
   def show
 		@user = User.find(params[:id])
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 			redirect_to user_path(@user.id)
 		else
 			flash.now[:danger] = 'アカウントの作成に失敗しました'
-			render :new
+			render 'new'
 		end
   end
 
