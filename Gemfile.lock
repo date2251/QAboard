@@ -115,6 +115,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    pg (1.2.3)
     popper_js (1.16.0)
     puma (4.3.5)
       nio4r (~> 2.0)
@@ -209,6 +210,7 @@ DEPENDENCIES
   kaminari
   listen (~> 3.2)
   mysql2 (>= 0.4.4)
+  pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)
   sass-rails (>= 6)
