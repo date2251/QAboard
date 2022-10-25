@@ -21,5 +21,5 @@ RubyOnRailsで質問掲示板を作成しました。
 |![マイページ](https://user-images.githubusercontent.com/53789788/87848654-1f9f7580-c91d-11ea-9dc2-c2c125e29346.png)|![マイページ２](https://user-images.githubusercontent.com/53789788/87848658-39d95380-c91d-11ea-9995-e22c115a90e1.png)|
 
 マイページでは自身の質問や回答を確認出来ます。お気に入りに登録した質問を抽出することも可能です。  
-以下herokuのリンクです。無課金のため動作は遅いです。申し訳ございません。  
-https://murmuring-plateau-79472.herokuapp.com/
+~~以下herokuのリンクです。無課金のため動作は遅いです。申し訳ございません。  ~~
+~~https://murmuring-plateau-79472.herokuapp.com/~~
