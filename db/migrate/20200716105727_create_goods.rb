@@ -6,7 +6,7 @@ class CreateGoods < ActiveRecord::Migration[6.0]
 
       t.timestamps
 
-			t.index [:user_id, :answer_id], unique: true
+      t.index %i[user_id answer_id], unique: true
     end
   end
 end

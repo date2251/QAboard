@@ -10,59 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_184008) do
-
-  create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.text "content"
-    t.bigint "question_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
+ActiveRecord::Schema.define(version: 20_200_716_184_008) do
+  create_table 'answers', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.text 'content'
+    t.bigint 'question_id', null: false
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['question_id'], name: 'index_answers_on_question_id'
+    t.index ['user_id'], name: 'index_answers_on_user_id'
   end
 
-  create_table "favorites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "question_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["question_id"], name: "index_favorites_on_question_id"
-    t.index ["user_id"], name: "index_favorites_on_user_id"
+  create_table 'favorites', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.bigint 'question_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['question_id'], name: 'index_favorites_on_question_id'
+    t.index ['user_id'], name: 'index_favorites_on_user_id'
   end
 
-  create_table "goods", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "answer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["answer_id"], name: "index_goods_on_answer_id"
-    t.index ["user_id", "answer_id"], name: "index_goods_on_user_id_and_answer_id", unique: true
-    t.index ["user_id"], name: "index_goods_on_user_id"
+  create_table 'goods', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.bigint 'user_id', null: false
+    t.bigint 'answer_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['answer_id'], name: 'index_goods_on_answer_id'
+    t.index %w[user_id answer_id], name: 'index_goods_on_user_id_and_answer_id', unique: true
+    t.index ['user_id'], name: 'index_goods_on_user_id'
   end
 
-  create_table "questions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.text "content"
-    t.string "tag", default: "その他"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_questions_on_user_id"
+  create_table 'questions', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.text 'content'
+    t.string 'tag', default: 'その他'
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['user_id'], name: 'index_questions_on_user_id'
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'users', charset: 'utf8mb4', collation: 'utf8mb4_0900_ai_ci', force: :cascade do |t|
+    t.string 'name'
+    t.string 'email'
+    t.string 'password_digest'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  add_foreign_key "answers", "questions"
-  add_foreign_key "answers", "users"
-  add_foreign_key "favorites", "questions"
-  add_foreign_key "favorites", "users"
-  add_foreign_key "goods", "answers"
-  add_foreign_key "goods", "users"
-  add_foreign_key "questions", "users"
+  add_foreign_key 'answers', 'questions'
+  add_foreign_key 'answers', 'users'
+  add_foreign_key 'favorites', 'questions'
+  add_foreign_key 'favorites', 'users'
+  add_foreign_key 'goods', 'answers'
+  add_foreign_key 'goods', 'users'
+  add_foreign_key 'questions', 'users'
 end

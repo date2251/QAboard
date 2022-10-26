@@ -1,5 +1,5 @@
 class ToppagesController < ApplicationController
-  before_action :tags, only: [:index, :search]
+  before_action :tags, only: %i[index search]
 
   def index
     @questions = Question.order(id: :desc).page(params[:page]).per(10)
@@ -8,11 +8,11 @@ class ToppagesController < ApplicationController
   def search
     @searchword = params[:search][:searchwords]
     @categoryword = params[:search][:categorywords]
-    if @searchword
-      @questions = Question.where("content LIKE ?", "%#{@searchword}%").order(id: :desc).page(params[:page]).per(10)
-    else
-      @questions = Question.where("tag LIKE ?", "%#{@categoryword}%").order(id: :desc).page(params[:page]).per(10)
-    end
+    @questions = if @searchword
+                   Question.where('content LIKE ?', "%#{@searchword}%").order(id: :desc).page(params[:page]).per(10)
+                 else
+                   Question.where('tag LIKE ?', "%#{@categoryword}%").order(id: :desc).page(params[:page]).per(10)
+                 end
     @count_questions = @questions.count
     render 'search'
   end
