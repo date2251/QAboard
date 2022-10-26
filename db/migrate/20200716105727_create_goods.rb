@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateGoods < ActiveRecord::Migration[6.0]
   def change
     create_table :goods do |t|
@@ -6,7 +8,7 @@ class CreateGoods < ActiveRecord::Migration[6.0]
 
       t.timestamps
 
-			t.index [:user_id, :answer_id], unique: true
+      t.index %i[user_id answer_id], unique: true
     end
   end
 end

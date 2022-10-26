@@ -1,12 +1,12 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   include SessionsHelper
-	
+
   private
-  
+
   def require_user_logged_in
-    unless logged_in?
-      redirect_to login_path
-    end
+    redirect_to login_path unless logged_in?
   end
 
   def counts_gooded(user)
@@ -15,6 +15,6 @@ class ApplicationController < ActionController::Base
     answers.each do |answer|
       num += Good.where(answer_id: answer.id).count
     end
-    return num
+    num
   end
 end

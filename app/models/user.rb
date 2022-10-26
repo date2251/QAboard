@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  before_save { self.email.downcase! }
+  before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
@@ -14,31 +16,31 @@ class User < ApplicationRecord
   has_many :goodings, through: :goods, source: :answer
 
   def love(answer)
-    self.goods.find_or_create_by(answer_id: answer.id)
+    goods.find_or_create_by(answer_id: answer.id)
   end
 
   def unlove(answer)
-    good = self.goods.find_by(answer_id: answer.id)
-    good.destroy if good
+    good = goods.find_by(answer_id: answer.id)
+    good&.destroy
   end
 
   def loving?(answer)
-    self.goodings.include?(answer)
+    goodings.include?(answer)
   end
 
   has_many :favorites
   has_many :favoritings, through: :favorites, source: :question
 
   def favorite(question)
-    self.favorites.find_or_create_by(question_id: question.id)
+    favorites.find_or_create_by(question_id: question.id)
   end
 
   def unfavorite(question)
-    favorite = self.favorites.find_by(question_id: question.id)
-    favorite.destroy if favorite
+    favorite = favorites.find_by(question_id: question.id)
+    favorite&.destroy
   end
 
   def favoriting?(question)
-    self.favoritings.include?(question)
+    favoritings.include?(question)
   end
 end
