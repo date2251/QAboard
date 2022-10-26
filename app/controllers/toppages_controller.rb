@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ToppagesController < ApplicationController
   before_action :tags, only: %i[index search]
 

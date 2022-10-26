@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AnswersController < ApplicationController
   def create
     @answer = Answer.new(params.permit(:content, :question_id, :user_id))

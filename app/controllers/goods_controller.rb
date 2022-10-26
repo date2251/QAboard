@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GoodsController < ApplicationController
   def create
     @answer = Answer.find(params[:answer_id])

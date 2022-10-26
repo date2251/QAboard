@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }
@@ -19,7 +21,7 @@ class User < ApplicationRecord
 
   def unlove(answer)
     good = goods.find_by(answer_id: answer.id)
-    good.destroy if good
+    good&.destroy
   end
 
   def loving?(answer)
@@ -35,7 +37,7 @@ class User < ApplicationRecord
 
   def unfavorite(question)
     favorite = favorites.find_by(question_id: question.id)
-    favorite.destroy if favorite
+    favorite&.destroy
   end
 
   def favoriting?(question)
