@@ -1,0 +1,96 @@
+# inherit_from: .rubocop_todo.yml
+
+## The behavior of RuboCop can be controlled via the .rubocop.yml
+## configuration file. It makes it possible to enable/disable
+## certain cops (checks) and to alter their behavior if they accept
+## any parameters. The file can be placed either in your home
+## directory or in some project directory.
+##
+## RuboCop will start looking for the configuration file in the directory
+## where the inspected file is and continue its way up to the root directory.
+##
+## See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  StyleGuideBaseURL: https://rubystyle.guide
+  TargetRubyVersion: 3.0.2
+  Exclude:
+    - "vendor/**/*" # rubocop config/default.yml
+    - "db/schema.rb"
+    - "db/migrate/*"
+    - "db/fixtures/**/*"
+    - "config/**/*"
+    - "bin/**/*"
+    - "lib/middlewares/**"
+    - "spec/rails_helper.rb"
+    - "spec/spec_helper.rb"
+    - "spec/support/**/*"
+    - "spec/fixtures/**/*"
+    - "Gemfile"
+    - "Rakefile"
+    - "tmp/**/*"
+    - 'lib/generators/**/*.rb'
+    - 'node_modules/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ImplicitSubject:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 10
+
+RSpec/ExampleLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 20
+
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/Be:
+  Enabled: false
+
+RSpec/FilePath:
+  Exclude:
+  - 'spec/models/**/*.rb'
+
+RSpec/LetSetup:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  Exclude:
+  - 'spec/**/*.rb'
+
+RSpec/AnyInstance:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Max: 10
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+Metrics/ClassLength:
+  Max: 200
